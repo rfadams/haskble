@@ -1,11 +1,15 @@
+import Woof
+import System.Random
+
 main = check_word 
 
 
 check_word = do
-  let word_data = ["howdy", "owdhy"]
-  putStrLn ("What's the word? " ++ (word_data !! 1))
+  g <- getStdGen
+  let (zword,scrambled) = twowords g
+  putStrLn ("What's the word? " ++ scrambled)
   word <- getLine
-  if word == word_data !! 0
+  if word == zword
     then putStrLn ("You win!")
     else do 
       putStrLn ("You suck!")
